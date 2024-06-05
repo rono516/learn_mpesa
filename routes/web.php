@@ -18,11 +18,14 @@ use App\Http\Controllers\MpesaSTKPUSHController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/v1/mpesatest/stk/push', [MpesaSTKPUSHController::class, 'STKPush']);
+Route::post('/v1/mpesatest/stk/push', [MpesaSTKPUSHController::class, 'STKPush'])->name('stk_push');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/mpesa_view', function () {
+    return view('mpesa_view');
+})->middleware(['auth', 'verified'])->name('mpesa.view');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
