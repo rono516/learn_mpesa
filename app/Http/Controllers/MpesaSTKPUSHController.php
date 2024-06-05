@@ -26,8 +26,8 @@ class MpesaSTKPUSHController extends Controller
         $result = $response->json(); 
 
         MpesaSTK::create([
-            'merchant_request_id' =>  $result['MerchantRequestID'],
-            'checkout_request_id' =>  $result['CheckoutRequestID']
+            'merchant_request_id' =>  $result['MerchantRequestID'] ?? null,
+            'checkout_request_id' =>  $result['CheckoutRequestID'] ?? null
         ]);
 
         return $result;
